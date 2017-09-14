@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+	<h:form id="frm">
+		<h:messages style="color:red;margin:8px;" />
+
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Cadastro plano de voo" />
+			</f:facet>
+
+			<h:outputText value="Nave" />
+			<p:selectOneMenu id="cbNave" value="#{planoVooController.plano.nave}"
+				style="width:150px">
+				<f:selectItem itemLabel="Seleciona uma nave" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{planoVooController.naves}" var="n"
+					itemValue="#{n}" itemLabel="#{n.name}" itemDescription="#{n.name}"
+					itemLabelEscaped="true" />
+			</p:selectOneMenu>
+
+
+
+			<h:outputText value="Planeta" />
+			<p:selectOneMenu id="cbPlaneta"
+				value="#{planoVooController.plano.planeta}" style="width:150px">
+				<f:selectItem itemLabel="Seleciona um planeta" itemValue=""
+					noSelectionOption="true" />
+				<f:selectItems value="#{planoVooController.planetas}" var="p"
+					itemValue="#{p}" itemLabel="#{p.name}" itemDescription="#{p.name}"
+					itemLabelEscaped="true" />
+
+			</p:selectOneMenu>
+
+
+
+		</p:panelGrid>
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Dados do tripulante" />
+			</f:facet>
+
+			<h:outputLabel value="Nome:" />
+			<p:inputText value="#{planoVooControler.nomeTripulante}" />
+
+			<h:outputLabel value="Genero:" />
+			<p:selectOneMenu value="#{planoVooController.generoTripulante}">
+				<f:selectItem itemValue="Nasculino" itemLabel="Masculino" />
+				<f:selectItem itemValue="Feminino" itemLabel="Feminino" />
+			</p:selectOneMenu>
+
+
+		</p:panelGrid>
+
+			<p:commandButton value="Incluir tripulante"
+				action="#{planoVooController.incluirTripulante}">
+				<f:ajax execute="frm" render="dtTripulantes" />
+			</p:commandButton>
+
+
+
+		<h1>Lista de passageiros</h1>
+
+		<p:dataTable id="dtTripulantes"
+			value="#{planoVooController.plano.tripulantes}" var="t">
+
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+			#{t.name}
+		</p:column>
+			<p:column>
+				<f:facet name="header">Genero</f:facet>
+			#{t.gender}
+		</p:column>
+
+
+		</p:dataTable>
+
+
+
+
+		<h1>Lista de planos de voo</h1>
+
+		<p:dataTable id="dtPlanos" value="#{planoVooController.planos}"
+			var="p">
+
+			<p:column>
+				<f:facet name="header">Nave</f:facet>
+			#{p.nave.name}
+		</p:column>
+			<p:column>
+				<f:facet name="header">Planeta</f:facet>
+			#{p.planeta.name}
+		</p:column>
+
+
+		</p:dataTable>
+
+		<p:commandButton value="Incluir plano de voo"
+			action="#{planoVooController.incluirPlano}">
+			<f:ajax execute="frm" render="dtPlanos" />
+		</p:commandButton>
+
+
+
+	</h:form>
+</h:body>
+
+</html>
