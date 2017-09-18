@@ -21,11 +21,12 @@
 			</f:facet>
 
 			<h:outputText value="Nave" />
-			<p:selectOneMenu id="cbNave" value="#{planoVooController.plano.nave}"
-				style="width:150px">
+			<p:selectOneMenu id="cbNave" value="#{planoVooControler.plano.nave}"
+				style="width:150px"
+				converter="naveConverter">
 				<f:selectItem itemLabel="Seleciona uma nave" itemValue=""
 					noSelectionOption="true" />
-				<f:selectItems value="#{planoVooController.naves}" var="n"
+				<f:selectItems value="#{planoVooControler.naves}" var="n"
 					itemValue="#{n}" itemLabel="#{n.name}" itemDescription="#{n.name}"
 					itemLabelEscaped="true" />
 			</p:selectOneMenu>
@@ -34,10 +35,11 @@
 
 			<h:outputText value="Planeta" />
 			<p:selectOneMenu id="cbPlaneta"
-				value="#{planoVooController.plano.planeta}" style="width:150px">
+				value="#{planoVooControler.plano.planeta}" style="width:150px"
+				converter="planetaConverter">
 				<f:selectItem itemLabel="Seleciona um planeta" itemValue=""
 					noSelectionOption="true" />
-				<f:selectItems value="#{planoVooController.planetas}" var="p"
+				<f:selectItems value="#{planoVooControler.planetas}" var="p"
 					itemValue="#{p}" itemLabel="#{p.name}" itemDescription="#{p.name}"
 					itemLabelEscaped="true" />
 
@@ -53,10 +55,10 @@
 			</f:facet>
 
 			<h:outputLabel value="Nome:" />
-			<p:inputText value="#{planoVooControler.nomeTripulante}" />
+			<p:inputText value="#{planoVooControler.tripulante.name}" />
 
 			<h:outputLabel value="Genero:" />
-			<p:selectOneMenu value="#{planoVooController.generoTripulante}">
+			<p:selectOneMenu value="#{planoVooControler.tripulante.gender}">
 				<f:selectItem itemValue="Nasculino" itemLabel="Masculino" />
 				<f:selectItem itemValue="Feminino" itemLabel="Feminino" />
 			</p:selectOneMenu>
@@ -64,11 +66,10 @@
 
 		</p:panelGrid>
 
-			<p:commandButton value="Incluir tripulante"
-				action="#{planoVooController.incluirTripulante}">
-				<f:ajax execute="frm" render="dtTripulantes" />
-			</p:commandButton>
 
+		<h:commandButton action="#{planoVooControler.incluirTripulante}" value="Incluir Tripulante">
+			<f:ajax execute="frm" render="dtTripulantes" ></f:ajax>
+		</h:commandButton>
 
 
 		<h1>Lista de passageiros</h1>
@@ -91,6 +92,11 @@
 
 
 
+		<h:commandButton action="#{planoVooControler.incluirPlano}" value="Incluir plano de voo">
+				<f:ajax execute="frm" render="dtPlanos" ></f:ajax>
+		</h:commandButton>
+		
+
 		<h1>Lista de planos de voo</h1>
 
 		<p:dataTable id="dtPlanos" value="#{planoVooController.planos}"
@@ -108,10 +114,7 @@
 
 		</p:dataTable>
 
-		<p:commandButton value="Incluir plano de voo"
-			action="#{planoVooController.incluirPlano}">
-			<f:ajax execute="frm" render="dtPlanos" />
-		</p:commandButton>
+
 
 
 

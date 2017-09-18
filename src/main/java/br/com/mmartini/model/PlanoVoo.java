@@ -5,8 +5,8 @@ import java.util.List;
 
 public class PlanoVoo {
 
-	private Nave nave;
-	private Planeta planeta;
+	private Nave nave = new Nave();
+	private Planeta planeta = new Planeta();
 	private List<Tripulante> tripulantes = new ArrayList<Tripulante>();
 
 	public Nave getNave() {
