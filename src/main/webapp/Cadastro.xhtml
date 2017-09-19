@@ -22,8 +22,7 @@
 
 			<h:outputText value="Nave" />
 			<p:selectOneMenu id="cbNave" value="#{planoVooControler.plano.nave}"
-				style="width:150px"
-				converter="naveConverter">
+				style="width:150px" converter="naveConverter">
 				<f:selectItem itemLabel="Seleciona uma nave" itemValue=""
 					noSelectionOption="true" />
 				<f:selectItems value="#{planoVooControler.naves}" var="n"
@@ -67,35 +66,38 @@
 		</p:panelGrid>
 
 
-		<h:commandButton action="#{planoVooControler.incluirTripulante}" value="Incluir Tripulante">
-			<f:ajax execute="frm" render="dtTripulantes" ></f:ajax>
-		</h:commandButton>
+		<p:commandButton value="Incluir tripulante" update="dtTripulantes"
+			action="#{planoVooControler.incluirTripulante}" ajax="false"/>
+			
+		
+
 
 
 		<h1>Lista de passageiros</h1>
 
-		<p:dataTable id="dtTripulantes"
-			value="#{planoVooController.plano.tripulantes}" var="t">
+		
 
-			<p:column>
-				<f:facet name="header">Nome</f:facet>
+			<p:dataTable id="dtTripulantes"
+				value="#{planoVooController.plano.tripulantes}" var="t">
+
+				<p:column>
+					<f:facet name="header">Nome</f:facet>
 			#{t.name}
 		</p:column>
-			<p:column>
-				<f:facet name="header">Genero</f:facet>
+				<p:column>
+					<f:facet name="header">Genero</f:facet>
 			#{t.gender}
 		</p:column>
 
 
-		</p:dataTable>
+			</p:dataTable>
 
 
 
 
-		<h:commandButton action="#{planoVooControler.incluirPlano}" value="Incluir plano de voo">
-				<f:ajax execute="frm" render="dtPlanos" ></f:ajax>
-		</h:commandButton>
-		
+		<p:commandButton action="#{planoVooControler.incluirPlano}"
+			value="Incluir plano de voo" ajax="false" update="dtPlanos" />
+
 
 		<h1>Lista de planos de voo</h1>
 
