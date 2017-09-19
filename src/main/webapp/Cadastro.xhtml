@@ -66,7 +66,7 @@
 		</p:panelGrid>
 
 
-		<p:commandButton value="Incluir tripulante" update="dtTripulantes"
+		<p:commandButton value="Incluir tripulante" update="@frm"
 			action="#{planoVooControler.incluirTripulante}" ajax="false"/>
 			
 		
@@ -78,7 +78,7 @@
 		
 
 			<p:dataTable id="dtTripulantes"
-				value="#{planoVooController.plano.tripulantes}" var="t">
+				value="#{planoVooControler.plano.tripulantes}" var="t">
 
 				<p:column>
 					<f:facet name="header">Nome</f:facet>
@@ -96,12 +96,12 @@
 
 
 		<p:commandButton action="#{planoVooControler.incluirPlano}"
-			value="Incluir plano de voo" ajax="false" update="dtPlanos" />
+			value="Incluir plano de voo" ajax="false" update="@frm" />
 
 
 		<h1>Lista de planos de voo</h1>
 
-		<p:dataTable id="dtPlanos" value="#{planoVooController.planos}"
+		<p:dataTable id="dtPlanos" value="#{planoVooControler.planos}"
 			var="p">
 
 			<p:column>

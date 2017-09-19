@@ -74,11 +74,10 @@ public class PlanoVooController {
 	public void incluirPlano() {
 		String planetaAtual = this.plano.getPlaneta().getName();
 		String planetaAnterior = "";
-		if (this.planos.size() > 0){ 
-			planetaAnterior = this.planos.get(this.planos.size() - 1).getPlaneta().getName();
-		} 
+
 				
 		if (this.planos.size() > 0) {
+			planetaAnterior = this.planos.get(this.planos.size() - 1).getPlaneta().getName();
 			if (planetaAtual.equals(planetaAnterior)) {
 				FacesMessage message = new FacesMessage(
 						FacesMessage.SEVERITY_ERROR,
@@ -88,6 +87,9 @@ public class PlanoVooController {
 				this.planos.add(this.plano);
 				this.plano = new PlanoVoo();
 			}
+		} else {
+			this.planos.add(this.plano);
+			this.plano = new PlanoVoo();	
 		}
 	}
 
