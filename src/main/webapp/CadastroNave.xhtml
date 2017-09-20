@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+	<h:form id="frm">
+		<h:messages style="color:red;margin:8px;" />
+
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Cadastro de Nave" />
+			</f:facet>
+
+			<p:outputLabel value="Nome" />
+			<p:inputText value="#{naveController.nave.name}" />
+
+			<p:outputLabel value="Modelo" />
+			<p:inputText value="#{naveController.nave.model}" />
+
+			<p:outputLabel value="Qtde de passageiros" />
+			<p:inputText value="#{naveController.nave.passengers}" />
+
+		</p:panelGrid>
+
+		<p:commandButton action="#{naveController.incluir}" value="Incluir" update="@frm" ajax="false"/>
+
+
+		<p:dataTable id="dtPlanetas" value="#{appService.naves}" var="p">
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+					#{p.name}
+				</p:column>
+			<p:column>
+				<f:facet name="header">MOdelo</f:facet>
+					#{p.model}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Qtde passageiros</f:facet>
+					#{p.passengers}
+				</p:column>
+		</p:dataTable>
+
+
+
+		<p:link outcome="/index" value="Voltar" />
+
+
+
+
+
+
+	</h:form>
+</h:body>
+
+</html>

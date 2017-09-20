@@ -25,7 +25,7 @@
 				style="width:150px" converter="naveConverter">
 				<f:selectItem itemLabel="Seleciona uma nave" itemValue=""
 					noSelectionOption="true" />
-				<f:selectItems value="#{planoVooControler.naves}" var="n"
+				<f:selectItems value="#{appService.naves}" var="n"
 					itemValue="#{n}" itemLabel="#{n.name}" itemDescription="#{n.name}"
 					itemLabelEscaped="true" />
 			</p:selectOneMenu>
@@ -38,7 +38,7 @@
 				converter="planetaConverter">
 				<f:selectItem itemLabel="Seleciona um planeta" itemValue=""
 					noSelectionOption="true" />
-				<f:selectItems value="#{planoVooControler.planetas}" var="p"
+				<f:selectItems value="#{appService.planetas}" var="p"
 					itemValue="#{p}" itemLabel="#{p.name}" itemDescription="#{p.name}"
 					itemLabelEscaped="true" />
 
@@ -101,7 +101,7 @@
 
 		<h1>Lista de planos de voo</h1>
 
-		<p:dataTable id="dtPlanos" value="#{planoVooControler.planos}"
+		<p:dataTable id="dtPlanos" value="#{appService.planos}"
 			var="p">
 
 			<p:column>
@@ -116,7 +116,7 @@
 
 		</p:dataTable>
 
-
+		<p:link outcome="/index" value="Voltar"/>
 
 
 

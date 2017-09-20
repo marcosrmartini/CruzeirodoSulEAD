@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+	<h:form id="frm">
+		<h:messages style="color:red;margin:8px;" />
+
+
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<h:outputText value="Cadastro de Planeta" />
+			</f:facet>
+
+			<p:outputLabel value="Nome" />
+			<p:inputText value="#{planetaController.planeta.name}" />
+
+			<p:outputLabel value="População" />
+			<p:inputText value="#{planetaController.planeta.population}" />
+
+			<p:outputLabel value="Clima" />
+			<p:inputText value="#{planetaController.planeta.climate}" />
+
+			<p:outputLabel value="Diametro" />
+			<p:inputText value="#{planetaController.planeta.diameter}" />
+
+			<p:outputLabel value="Terreno" />
+			<p:inputText value="#{planetaController.planeta.terrain}" />
+		</p:panelGrid>
+
+		<p:commandButton action="#{planetaController.incluir}" value="Incluir" update="@frm" ajax="false"/>
+
+
+		<p:dataTable id="dtPlanetas" value="#{appService.planetas}" var="p">
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+					#{p.name}
+				</p:column>
+			<p:column>
+				<f:facet name="header">População</f:facet>
+					#{p.population}
+				</p:column>
+			<p:column>
+				<f:facet name="header">Clima</f:facet>
+					#{p.climate}
+				</p:column>
+		</p:dataTable>
+
+
+
+		<p:link outcome="/index" value="Voltar" />
+
+
+
+
+
+
+	</h:form>
+</h:body>
+
+</html>
