@@ -15,7 +15,7 @@ import br.com.mmartini.model.PlanoVoo;
 @ApplicationScoped
 public class AppService {
 
-	private List<PlanoVoo> planos = new ArrayList<PlanoVoo>();
+	private static List<PlanoVoo> planos = new ArrayList<PlanoVoo>();
 	private static List<Nave> naves = new ArrayList<Nave>();
 	private static List<Planeta> planetas = new ArrayList<Planeta>();
 
